@@ -1,8 +1,8 @@
 import React from 'react';
 import {GlobalStyle} from "./styles/global";
-import logo from "logo.svg"
 import styled from "styled-components";
 import {NavBar} from "./components/NavBar";
+import {Navbar2} from "./components/NavBar2";
 import {Home} from "./pages/Home";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {Portfolio} from "./pages/Portfolio";
@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <AppContainer>
             <GlobalStyle/>
             <Router>
-                <NavBar/>
+                <NavBar />
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path={'portfolio'} element={<Portfolio/>}/>

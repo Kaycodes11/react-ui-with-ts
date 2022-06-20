@@ -13,4 +13,8 @@ export const GlobalStyle = createGlobalStyle`
   #root {
     margin: 0 auto;
   }
+  
+  //html, body {
+  //  overflow-x: hidden;
+  //}
 `;
