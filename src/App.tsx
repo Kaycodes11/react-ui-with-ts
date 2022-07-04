@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <AppContainer>
             <GlobalStyle/>
             <Router>
-                <NavBar />
+                <NavBar/>
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path={'portfolio'} element={<Portfolio/>}/>
