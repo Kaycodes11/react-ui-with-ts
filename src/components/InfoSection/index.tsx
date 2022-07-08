@@ -1,16 +1,37 @@
 import React from 'react';
-import {Container} from '../../styles/global';
-import {InfoColumn, InfoRow, InfoSec, TextWrapper} from "./styled";
+import {Button, Container} from '../../styles/global';
+import {Heading, InfoColumn, InfoRow, InfoSec, SubTitle, TextWrapper, TopLine} from "./styled";
+import {Link} from "react-router-dom";
 
 
-const InfoSection: React.FC<Props> = ({lightBg = false, imgStart = false}) => {
+const InfoSection: React.FC<Props> = ({
+                                          lightBg = false,
+                                          imgStart = false,
+                                          lightTopLine,
+                                          lightText,
+                                          headline,
+                                          topLine,
+                                          description,
+                                          lightTextDesc,
+                                          buttonLabel,
+                                          primary
+
+                                      }) => {
+    // console.log(primary, "HERE");
     return (
         <>
             <InfoSec lightBg={lightBg}>
                 <Container>
-                    <InfoRow imgStart>
+                    <InfoRow imgStart={imgStart}>
                         <InfoColumn>
-                            <TextWrapper>HomePage</TextWrapper>
+                            <TextWrapper>
+                                <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
+                                <Heading lightText={lightText}>{headline}</Heading>
+                                <SubTitle lightTextDesc={lightTextDesc}>{description}</SubTitle>
+                                <Link to={"/sign-up"}>
+                                    <Button big fontBig primary={false}>{buttonLabel}</Button>
+                                </Link>
+                            </TextWrapper>
                         </InfoColumn>
                     </InfoRow>
                 </Container>
@@ -21,7 +42,16 @@ const InfoSection: React.FC<Props> = ({lightBg = false, imgStart = false}) => {
 
 interface Props {
     lightBg: boolean | string;
-    imgStart?: boolean | string
+    headline: boolean | string;
+    imgStart?: boolean | string;
+    topLine: boolean | string;
+    description: boolean | string;
+    lightTopLine?: boolean | string;
+    lightText: boolean | string;
+    lightTextDesc?: boolean | string;
+    buttonLabel?: boolean | string;
+    primary?: boolean | string;
+
 
 }
 
