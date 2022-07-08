@@ -1,7 +1,37 @@
+import {forwardRef} from 'react';
 import styled, {css} from "styled-components";
 import {Container} from "../../styles/global";
 import {Link} from "react-router-dom";
 import {FaMagento} from "react-icons/fa";
+import {ButtonHTMLAttributes} from "react";
+
+// Extending the navtive Html/JSX elements
+export interface ButtonProps2 extends ButtonHTMLAttributes<HTMLButtonElement> {
+    extraProp1: string;
+    extraProp2: string;
+}
+
+export const Button1 = forwardRef<HTMLButtonElement, ButtonProps2>(
+    ({extraProp1, extraProp2, ...props}, ref) => (
+        <button
+            {...props}
+            ref={ref}
+            // Do something with the extra props
+        />
+    ),
+);
+
+// Button1.displayName = "Button";
+
+
+type TheCustomButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    children: React.ReactNode;
+    icon?: React.ReactNode;
+}
+
+const Button2 = ({children, icon, ...props}: TheCustomButtonProps) => {
+    return <div>Button</div>
+}
 
 export const Nav = styled.nav`
   background: #101522;
@@ -14,7 +44,6 @@ export const Nav = styled.nav`
   top: 0;
   z-index: 999;
 `;
-
 
 export const NavBarContainer = styled(Container)`
   display: flex;
@@ -37,6 +66,7 @@ export const NavLogo = styled(Link)`
 export const NavIcon = styled(FaMagento)`
   margin-right: 0.5rem;
 `
+
 export const MobileIcon = styled.div`
   display: none;
 
@@ -52,7 +82,7 @@ export const MobileIcon = styled.div`
 `;
 
 // custom prop(s): Heading's color depend on given isActive value on <Heading active={false} /> at runtime.
-export const Heading = styled.h1<{isActive: boolean}>`
+export const Heading = styled.h1<{ isActive: boolean }>`
   color: ${props => props.isActive ? "green" : "black"};
 `;
 
@@ -91,7 +121,7 @@ export const WrapperStyled = styled.div(
     `
 );
 
-export const NavMenu = styled.ul<{click?: boolean}>`
+export const NavMenu = styled.ul<{ click?: boolean }>`
   display: flex;
   align-items: center;
   list-style: none;

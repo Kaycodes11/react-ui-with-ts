@@ -28,5 +28,34 @@ export const Container = styled.div`
     padding-right: 30px;
     padding-left: 30px;
   }
+`;
+
+
+interface ButtonProps {
+    primary: `primary`,
+    big?: `big`;
+    fontBig?: string;
+}
+
+export const Button = styled.button<ButtonProps>`
+  border-radius: 4px;
+  background: ${(primary) => (primary ? '#4B59F7' : '#0467FB')};
+  white-space: nowrap;
+  padding: ${({big}) => (big ? '12px 6px' : '10px 2px')}
+  color: #FFFFFF;
+  font-size: ${({fontBig}) => (fontBig ? "20px" : "16px")};
+  outline: none;
+  border: none;
+  cursor: pointer;
   
+  &:hover {
+    transition: all .3s ease-out;
+    background: #FFFFFF;
+    background: ${(primary) => (primary ? '#4B59F7' : '#0467FB')};
+  }
+  
+  @media screen and (max-width: 960px) {
+    width: 100%;
+  }
+
 `;
