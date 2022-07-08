@@ -15,19 +15,19 @@ export const HomeObjOne = {
 };
 
 export const HomeObjTwo = {
-    lightBg: false,
+    lightBg: true,
     primary: false,
-    imgStart: '',
-    lightTopLine: true,
-    lightTextDesc: true,
+    imgStart: 'start',
+    lightTopLine: false,
+    lightTextDesc: false,
     buttonLabel: `Get Started`,
     description: `We help business owners increase their revenue. The team of unique specialists can help you achieve your business goals. `,
     headline: `Lead generation specialist for online businesses`,
-    lightText: true,
+    lightText: false,
     topLine: `Marketing agency`,
     img: require('../../assets/profile.jpg'),
     alt: 'Image',
-    start: ''
+    start: 'true'
 };
 
 export const HomeObjThree = {
@@ -49,7 +49,7 @@ export const HomeObjThree = {
 export const HomeObjFour = {
     lightBg: false,
     primary: false,
-    imgStart: '',
+    imgStart: 'start',
     lightTopLine: true,
     lightTextDesc: true,
     buttonLabel: `Get Started`,
@@ -59,5 +59,5 @@ export const HomeObjFour = {
     topLine: `Marketing agency`,
     img: require('../../assets/svg-3.svg').default,
     alt: 'Image',
-    start: ''
+    start: 'true'
 };
