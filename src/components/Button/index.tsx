@@ -1,5 +1,5 @@
 import * as React from "react";
-import {StyledButton} from "./styles";
+import {StyledButton} from "./styled";
 
 interface ButtonProps {
     btnText: string;

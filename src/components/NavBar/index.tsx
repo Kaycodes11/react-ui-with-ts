@@ -6,7 +6,7 @@ import {
     NavMenu,
     NavBtn,
     NavBtnLink
-} from './styles';
+} from './styled';
 
 function NavBar() {
     const activeClassName = "underline";
