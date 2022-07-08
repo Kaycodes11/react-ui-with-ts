@@ -1,12 +1,15 @@
 import React from 'react';
 import {InfoSection} from "../../components/InfoSection";
-import {HomeObjOne as homeObjOne} from "./data";
+import * as HomeObject from "./data";
 
 const Home = () => {
     return (
         <>
             {/*<InfoSection lightBg={HomeObjOne.lightBg}/>*/}
-            <InfoSection {...homeObjOne} />
+            <InfoSection {...HomeObject.HomeObjOne} />
+            <InfoSection {...HomeObject.HomeObjTwo} />
+            <InfoSection {...HomeObject.HomeObjThree} />
+            <InfoSection {...HomeObject.HomeObjFour} />
         </>
     )
 }

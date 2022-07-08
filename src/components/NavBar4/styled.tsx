@@ -39,6 +39,7 @@ const Button2 = ({children, icon, ...props}: TheCustomButtonProps) => {
 // https://stackoverflow.com/questions/57424821/typescript-extend-react-component-props-for-styled-component-element
 // https://stackoverflow.com/questions/50627493/how-can-one-extend-react-types-to-support-html-attributes-as-props
 // https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/
+// https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/
 
 export type ButtonVariant = 'text' | 'filled' | 'outlined';
 

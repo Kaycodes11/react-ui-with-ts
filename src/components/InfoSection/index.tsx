@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Container} from '../../styles/global';
-import {Heading, InfoColumn, InfoRow, InfoSec, SubTitle, TextWrapper, TopLine} from "./styled";
+import {Heading, Img, ImgWrapper, InfoColumn, InfoRow, InfoSec, SubTitle, TextWrapper, TopLine} from "./styled";
 import {Link} from "react-router-dom";
 
 
@@ -14,10 +14,10 @@ const InfoSection: React.FC<Props> = ({
                                           description,
                                           lightTextDesc,
                                           buttonLabel,
-                                          primary
+                                          img, alt, start
 
                                       }) => {
-    // console.log(primary, "HERE");
+    console.log(img, "HERE");
     return (
         <>
             <InfoSec lightBg={lightBg}>
@@ -32,6 +32,11 @@ const InfoSection: React.FC<Props> = ({
                                     <Button big fontBig primary={false}>{buttonLabel}</Button>
                                 </Link>
                             </TextWrapper>
+                        </InfoColumn>
+                        <InfoColumn>
+                            <ImgWrapper start={start}>
+                                <Img src={img} alt={alt}/>
+                            </ImgWrapper>
                         </InfoColumn>
                     </InfoRow>
                 </Container>
@@ -51,8 +56,9 @@ interface Props {
     lightTextDesc?: boolean | string;
     buttonLabel?: boolean | string;
     primary?: boolean | string;
-
-
+    img: string;
+    alt: string;
+    start: string
 }
 
 export {InfoSection};
