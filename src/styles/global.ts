@@ -30,13 +30,14 @@ export const Container = styled.div`
   }
 `;
 
-
+// interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
 interface ButtonProps {
-    primary: `primary`,
-    big?: `big`;
-    fontBig?: string;
+    primary?: boolean,
+    big?: boolean;
+    fontBig?: boolean;
 }
 
+// since .button element used so when Button used later; it'll get native & custom props both
 export const Button = styled.button<ButtonProps>`
   border-radius: 4px;
   background: ${(primary) => (primary ? '#4B59F7' : '#0467FB')};

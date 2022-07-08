@@ -1,11 +1,13 @@
-import {forwardRef} from 'react';
+import React, {DetailedHTMLProps, forwardRef} from 'react';
 import styled, {css} from "styled-components";
 import {Container} from "../../styles/global";
 import {Link} from "react-router-dom";
 import {FaMagento} from "react-icons/fa";
 import {ButtonHTMLAttributes} from "react";
 
-// Extending the navtive Html/JSX elements
+// Extending the native HTML/JSX elements while preserving its native props and also adding some custom props
+// https://stackoverflow.com/questions/40731352/extending-html-elements-in-react-and-typescript-while-preserving-props
+
 export interface ButtonProps2 extends ButtonHTMLAttributes<HTMLButtonElement> {
     extraProp1: string;
     extraProp2: string;
@@ -20,7 +22,6 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps2>(
         />
     ),
 );
-
 // Button1.displayName = "Button";
 
 
@@ -33,6 +34,64 @@ const Button2 = ({children, icon, ...props}: TheCustomButtonProps) => {
     return <div>Button</div>
 }
 
+// extend React element with native and custom props for styled components
+// https://stackoverflow.com/questions/54654303/using-a-forwardref-component-with-children-in-typescript
+// https://stackoverflow.com/questions/57424821/typescript-extend-react-component-props-for-styled-component-element
+// https://stackoverflow.com/questions/50627493/how-can-one-extend-react-types-to-support-html-attributes-as-props
+// https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/
+
+export type ButtonVariant = 'text' | 'filled' | 'outlined';
+
+export const ButtonElement = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+`;
+
+export interface ButtonProps {
+    variant: ButtonVariant;
+}
+
+
+export interface FancyButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+
+    loading?: boolean;
+    secondary?: boolean;
+    fullWidth?: boolean;
+    maxHeight?: boolean;
+    fooBar?: string;
+}
+
+const FancyButton = React.forwardRef<HTMLButtonElement, FancyButtonProps>((props, ref) => (
+    <button type="button" ref={ref} className="FancyButton">
+        {props.children}
+        {props.fooBar}
+    </button>
+));
+
+const buttonRef = React.createRef<HTMLButtonElement>();
+// usage
+// <FancyButton ref={buttonRef} fooBar={"someValue"}>Fancy Button</FancyButton>
+
+interface Props extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+    loading?: boolean;
+    secondary?: boolean;
+    fullWidth?: boolean;
+    maxHeight?: boolean;
+}
+
+export const Button4: React.FC<Props> = (props: Props) => {
+    const {ref, ...buttonProps} = props;
+    return <SButton {...buttonProps}>{props.children}</SButton>
+}
+
+export const SButton = styled.button<Props>(props => css`
+  background: green;
+  color: black;
+`);
+
+// ----------------------------------------------------------------------------------------------------
 export const Nav = styled.nav`
   background: #101522;
   height: 80px;
@@ -179,3 +238,24 @@ export const NavLinks = styled(Link)`
   }
 `;
 
+export const NavItemBtn = styled.li`
+  @media screen and (max-width: 960px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+  }
+`;
+
+export const NavBtnLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 8px 16px;
+  height: 100%;
+  width: 100%;
+  border:none;
+  outline: none;
+`
