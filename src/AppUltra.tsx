@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route, useLocation} from "react-router-dom";
 import {NavBar} from "./components/NavBar";
 import {Footer} from './components/Footer';
-import {GlobalStyle} from "./styles/global";
+import {Button, GlobalStyle} from "./styles/global";
 import {Home} from "./pages/Home";
 import {Services} from "./pages/Services";
 import {Products} from "./pages/Products";
@@ -10,6 +10,7 @@ import {SignUp} from "./pages/SignUp";
 import {Accordion} from "./components/Accordion";
 import {ImageSlider} from "./components/Carousel";
 import "./App.css"
+import { Modal } from './components/Modal';
 
 // move to separate component
 const ScrollToTop = () => {
@@ -24,13 +25,22 @@ const ScrollToTop = () => {
 
 
 export default function App() {
+    const [showModal, setShowModal] = React.useState<boolean | any>(false);
+
+    const openModal = () => {
+        setShowModal((prev: any) => !prev);
+    };
+
+
     return (
         <Router>
             <GlobalStyle/>
             <ScrollToTop />
             <NavBar/>
             {/*<Accordion/>*/}
-            <ImageSlider />
+            {/*<ImageSlider />*/}
+            {/*<Button onClick={openModal}>I'm a modal</Button>*/}
+            {/*<Modal showModal={showModal} setShowModal={setShowModal} />*/}
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path={'services'} element={<Services/>}/>
