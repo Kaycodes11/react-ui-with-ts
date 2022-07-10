@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from '../../styles/global';
 import {
     FooterContainer, FooterLink,
-    FooterLinksContainer, FooterLinksItems, FooterLinksWrapper, FooterLinkTitle,
+    FooterLinksContainer, FooterLinkItems, FooterLinksWrapper, FooterLinkTitle,
     FooterSubHeading,
     FooterSubscription,
     FooterSubText,
@@ -24,35 +24,48 @@ export const Footer: React.FC<FooterProps> = () => {
                     <Button fontBig>Subscribe</Button>
                 </Form>
             </FooterSubscription>
+
             <FooterLinksContainer>
                 <FooterLinksWrapper>
 
-                    <FooterLinksItems>
+                    <FooterLinkItems>
+                        <FooterLinkTitle>About Us</FooterLinkTitle>
+                        <FooterLink to="/sign-up">How it works</FooterLink>
+                        <FooterLink to="/">Testimonials</FooterLink>
+                        <FooterLink to="/">Careers</FooterLink>
+                        <FooterLink to="/">Investors</FooterLink>
+                        <FooterLink to="/">Terms of Service</FooterLink>
+                    </FooterLinkItems>
+
+                    <FooterLinkItems>
                         <FooterLinkTitle>Contact Us</FooterLinkTitle>
                         <FooterLink to="/sign-up">How it works</FooterLink>
                         <FooterLink to="/">Testimonials</FooterLink>
                         <FooterLink to="/">Careers</FooterLink>
                         <FooterLink to="/">Investors</FooterLink>
                         <FooterLink to="/">Terms of Service</FooterLink>
-                    </FooterLinksItems>
+                    </FooterLinkItems>
+                </FooterLinksWrapper>
 
-                    <FooterLinksItems>
+
+                <FooterLinksWrapper>
+                    <FooterLinkItems>
                         <FooterLinkTitle>Videos</FooterLinkTitle>
                         <FooterLink to="/sign-up">How it works</FooterLink>
                         <FooterLink to="/">Testimonials</FooterLink>
                         <FooterLink to="/">Careers</FooterLink>
                         <FooterLink to="/">Investors</FooterLink>
                         <FooterLink to="/">Terms of Service</FooterLink>
-                    </FooterLinksItems>
+                    </FooterLinkItems>
 
-                    <FooterLinksItems>
+                    <FooterLinkItems>
                         <FooterLinkTitle>Social Media</FooterLinkTitle>
                         <FooterLink to="/sign-up">How it works</FooterLink>
                         <FooterLink to="/">Testimonials</FooterLink>
                         <FooterLink to="/">Careers</FooterLink>
                         <FooterLink to="/">Investors</FooterLink>
                         <FooterLink to="/">Terms of Service</FooterLink>
-                    </FooterLinksItems>
+                    </FooterLinkItems>
 
                 </FooterLinksWrapper>
             </FooterLinksContainer>
@@ -63,7 +76,7 @@ export const Footer: React.FC<FooterProps> = () => {
                         <SocialIcon/>
                         ULTRA
                     </SocialLogo>
-                    <WebsiteRights>ULTRA 2022</WebsiteRights>
+                    <WebsiteRights>ULTRA &#169; 2022</WebsiteRights>
                     <SocialIcons>
                         <SocialIconLink href={""} target={"_blank"} aria-label={"Twitter"}>
                             <FaTwitter/>
