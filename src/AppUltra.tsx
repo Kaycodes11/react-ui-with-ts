@@ -7,6 +7,7 @@ import {Home} from "./pages/Home";
 import {Services} from "./pages/Services";
 import {Products} from "./pages/Products";
 import {SignUp} from "./pages/SignUp";
+import {Accordion} from "./components/Accordion";
 
 // move to separate component
 const ScrollToTop = () => {
@@ -26,6 +27,7 @@ export default function App() {
             <GlobalStyle/>
             <ScrollToTop />
             <NavBar/>
+            <Accordion/>
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path={'services'} element={<Services/>}/>
