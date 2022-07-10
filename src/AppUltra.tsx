@@ -8,7 +8,7 @@ import {Services} from "./pages/Services";
 import {Products} from "./pages/Products";
 import {SignUp} from "./pages/SignUp";
 
-// move to separate component later
+// move to separate component
 const ScrollToTop = () => {
     const {pathname} = useLocation();
 
