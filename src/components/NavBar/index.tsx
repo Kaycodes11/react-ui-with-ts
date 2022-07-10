@@ -1,40 +1,91 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     Nav,
-    NavLink,
-    Bars,
+    NavBarContainer,
+    NavIcon,
+    NavLogo,
+    MobileIcon,
     NavMenu,
-    NavBtn,
+    NavItem,
+    NavLinks,
+    NavItemBtn,
     NavBtnLink
-} from './styled';
+} from "./styled";
+import {FaBars, FaTimes} from "react-icons/fa";
+import {IconContext} from "react-icons";
+import {Button} from "../../styles/global";
+
 
 function NavBar() {
-    const activeClassName = "underline";
+    const [click, setClick] = React.useState<boolean | undefined>(false);
+    const [button, setButton] = React.useState<boolean | undefined>(true);
+
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false)
+        } else {
+            setButton(true)
+        }
+    };
+
+    useEffect(() => {
+        showButton();
+    }, []);
+
+    window.addEventListener('resize', showButton);
+
     return (
-        <Nav>
-            <NavLink to='/'>
-                <img src={require('../../logo.svg')} alt='logo'/>
-            </NavLink>
-            <Bars/>
-            <NavMenu>
-                <NavLink to='/portfolio' className={({isActive}) => isActive ? activeClassName : undefined}>
-                    Portfolio
-                </NavLink>
-                <NavLink to='/resume'>
-                    Resume
-                </NavLink>
-                <NavLink to='/about'>
-                    about
-                </NavLink>
-                <NavLink to='/sign-up'>
-                    Sign Up
-                </NavLink>
-            </NavMenu>
-            <NavBtn>
-                <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-            </NavBtn>
-        </Nav>
-    );
+        <IconContext.Provider value={{color: "#ffffff"}}>
+            <Nav>
+                <NavBarContainer>
+                    <NavLogo to="/" onClick={closeMobileMenu}>
+                        <NavIcon/>
+                        Ultra
+                    </NavLogo>
+                    <MobileIcon onClick={handleClick}>
+                        {click ? <FaTimes/> : <FaBars/>}
+                    </MobileIcon>
+                    <NavMenu onClick={handleClick} click={click}>
+                        <NavItem>
+                            <NavLinks to="/" onClick={closeMobileMenu}>Home</NavLinks>
+                        </NavItem>
+
+                        {/*<NavItem>*/}
+                        {/*    <NavLinks to="/">Resume</NavLinks>*/}
+                        {/*</NavItem>*/}
+
+                        <NavItem>
+                            <NavLinks to='/services' onClick={closeMobileMenu}>Services</NavLinks>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLinks to="/products" onClick={closeMobileMenu}>Products</NavLinks>
+                        </NavItem>
+
+                        <NavItemBtn>
+                            {button ? (
+                                <NavBtnLink to={"sign-up"}>
+                                    <Button primary={true}>SIGN UP</Button>
+                                </NavBtnLink>
+
+                            ) : (
+                                <NavBtnLink to={"/sign-up"}>
+                                    <Button onClick={closeMobileMenu} fontBig primary>SIGN UP</Button>
+                                </NavBtnLink>
+                            )
+                            }
+                        </NavItemBtn>
+
+                    </NavMenu>
+                </NavBarContainer>
+            </Nav>
+        </IconContext.Provider>
+    )
 }
 
-export {NavBar}
+
+export {NavBar};
+
