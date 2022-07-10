@@ -14,7 +14,7 @@ const InfoSection: React.FC<Props> = ({
                                           description,
                                           lightTextDesc,
                                           buttonLabel,
-                                          img, alt, start
+                                          img, alt, start = ''
 
                                       }) => {
     console.log(img, "HERE");
@@ -58,7 +58,7 @@ interface Props {
     primary?: boolean | string;
     img: string;
     alt: string;
-    start: string
+    start?: string
 }
 
 export {InfoSection};

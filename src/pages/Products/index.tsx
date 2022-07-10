@@ -1,3 +1,13 @@
-import React from "react";
+import React from 'react';
+import { homeObjOne, homeObjTwo } from './data';
+import {InfoSection} from "../../components/InfoSection";
 
-export const Products: React.FC<{}> = () => <div>Products</div>
+export function Products() {
+    return (
+        <>
+            <InfoSection {...homeObjOne} />
+            <InfoSection {...homeObjTwo} />
+        </>
+    );
+}
+

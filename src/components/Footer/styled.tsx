@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {Link} from "react-router-dom";
-import {FaMagento} from "react-icons/fa";
+import { FaMagento } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.div`
   background-color: #101522;
@@ -19,15 +19,16 @@ export const FooterSubscription = styled.section`
   text-align: center;
   margin-bottom: 24px;
   padding: 24px;
-  color: #ffffff;
+  color: #fff;
 `;
 
 export const FooterSubHeading = styled.p`
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
   margin-bottom: 24px;
   font-size: 24px;
-
 `;
+
 export const FooterSubText = styled.p`
   margin-bottom: 24px;
   font-size: 20px;
@@ -43,13 +44,14 @@ export const Form = styled.form`
     width: 80%;
   }
 `;
+
 export const FormInput = styled.input`
   padding: 10px 20px;
   border-radius: 2px;
-  margin-bottom: 10px;
+  margin-right: 10px;
   outline: none;
   font-size: 16px;
-  border: 1px solid white;
+  border: 1px solid #fff;
 
   &::placeholder {
     color: #242424;
@@ -83,12 +85,12 @@ export const FooterLinksWrapper = styled.div`
 export const FooterLinkItems = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 16px;
   text-align: left;
   width: 160px;
   box-sizing: border-box;
-  color: white;
+  color: #fff;
 
   @media screen and (max-width: 420px) {
     margin: 0;
@@ -102,7 +104,7 @@ export const FooterLinkTitle = styled.h2`
 `;
 
 export const FooterLink = styled(Link)`
-  color: white;
+  color: #fff;
   text-decoration: none;
   margin-bottom: 0.5rem;
 
@@ -131,7 +133,7 @@ export const SocialMediaWrap = styled.div`
 `;
 
 export const SocialLogo = styled(Link)`
-  color: white;
+  color: #fff;
   justify-self: start;
   cursor: pointer;
   text-decoration: none;
@@ -146,7 +148,7 @@ export const SocialIcon = styled(FaMagento)`
 `;
 
 export const WebsiteRights = styled.small`
-  color: white;
+  color: #fff;
   margin-bottom: 16px;
 `;
 
@@ -158,7 +160,6 @@ export const SocialIcons = styled.div`
 `;
 
 export const SocialIconLink = styled.a`
-  color: white;
+  color: #fff;
   font-size: 24px;
 `;
-

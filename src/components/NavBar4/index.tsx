@@ -21,6 +21,8 @@ function NavBar() {
     const [button, setButton] = React.useState<boolean | undefined>(true);
 
     const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+
     const showButton = () => {
         if (window.innerWidth <= 960) {
             setButton(false)
@@ -31,13 +33,15 @@ function NavBar() {
 
     useEffect(() => {
         showButton();
-    }, [])
+    }, []);
+
+    window.addEventListener('resize', showButton);
 
     return (
         <IconContext.Provider value={{color: "#ffffff"}}>
             <Nav>
                 <NavBarContainer>
-                    <NavLogo to="/">
+                    <NavLogo to="/" onClick={closeMobileMenu}>
                         <NavIcon/>
                         Ultra
                     </NavLogo>
@@ -46,19 +50,19 @@ function NavBar() {
                     </MobileIcon>
                     <NavMenu onClick={handleClick} click={click}>
                         <NavItem>
-                            <NavLinks to="/">Home</NavLinks>
+                            <NavLinks to="/" onClick={closeMobileMenu}>Home</NavLinks>
+                        </NavItem>
+
+                        {/*<NavItem>*/}
+                        {/*    <NavLinks to="/">Resume</NavLinks>*/}
+                        {/*</NavItem>*/}
+
+                        <NavItem>
+                            <NavLinks to='/services' onClick={closeMobileMenu}>Services</NavLinks>
                         </NavItem>
 
                         <NavItem>
-                            <NavLinks to="/">Service</NavLinks>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLinks to="/">Resume</NavLinks>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLinks to="/">About Me</NavLinks>
+                            <NavLinks to="/products" onClick={closeMobileMenu}>Products</NavLinks>
                         </NavItem>
 
                         <NavItemBtn>
@@ -69,7 +73,7 @@ function NavBar() {
 
                             ) : (
                                 <NavBtnLink to={"/sign-up"}>
-                                    <Button fontBig primary>SIGN UP</Button>
+                                    <Button onClick={closeMobileMenu} fontBig primary>SIGN UP</Button>
                                 </NavBtnLink>
                             )
                             }
