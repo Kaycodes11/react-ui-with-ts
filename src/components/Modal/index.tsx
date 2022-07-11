@@ -65,9 +65,9 @@ const CloseModalButton = styled(MdClose)`
 `;
 
 export const Modal: React.FC<{ showModal: boolean, setShowModal: (prevState: any) => void }> = ({
-                                                                                                        showModal ,
-                                                                                                        setShowModal
-                                                                                                    }) => {
+                                                                                                    showModal,
+                                                                                                    setShowModal
+                                                                                                }) => {
     const modalRef = useRef<any | undefined>();
 
     const animation = useSpring({

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route, useLocation} from "react-router-dom";
 import {NavBar} from "./components/NavBar";
 import {Footer} from './components/Footer';
+// import MuiButton from "@mui/material/Button"
 import {Button, GlobalStyle} from "./styles/global";
 import {Home} from "./pages/Home";
 import {Services} from "./pages/Services";
@@ -37,6 +38,7 @@ export default function App() {
             <GlobalStyle/>
             <ScrollToTop />
             <NavBar/>
+            {/*<MuiButton color={"primary"} size={"medium"}>MButton</MuiButton>*/}
             {/*<Accordion/>*/}
             {/*<ImageSlider />*/}
             {/*<Button onClick={openModal}>I'm a modal</Button>*/}
