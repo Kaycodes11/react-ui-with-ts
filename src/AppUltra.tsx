@@ -10,9 +10,10 @@ import {Products} from "./pages/Products";
 import {SignUp} from "./pages/SignUp";
 import {Accordion} from "./components/Accordion";
 import {ImageSlider} from "./components/Carousel";
-import { Modal } from './components/Modal';
+import {Modal} from './components/Modal';
 import {useAppSelector} from "./hooks";
 import "./App.css"
+import {useGetPokemonByNameQuery} from "./services/pokemon";
 
 // move to separate component
 const ScrollToTop = () => {
@@ -29,6 +30,8 @@ const ScrollToTop = () => {
 export default function App() {
     const [showModal, setShowModal] = React.useState<boolean | any>(false);
     const count = useAppSelector(state => state.counter.value);
+    const {data, error, isLoading} = useGetPokemonByNameQuery('raichu');
+    console.log('data: ', data);
 
     const openModal = () => {
         setShowModal((prev: any) => !prev);
@@ -38,8 +41,21 @@ export default function App() {
     return (
         <Router>
             <GlobalStyle/>
-            <ScrollToTop />
+            <ScrollToTop/>
             <NavBar/>
+
+            {error ? (
+                <>Oh no, there was an error</>
+            ) : isLoading ? (
+                <>Loading...</>
+            ) : data ? (
+                <>
+                    <h3>{data.species.name}</h3>
+                    <img src={data.sprites.front_shiny} alt={data.species.name}/>
+                </>
+            ) : null}
+
+
             {/*<MuiButton color={"primary"} size={"medium"}>MButton</MuiButton>*/}
             {/*<Accordion/>*/}
             {/*<ImageSlider />*/}
