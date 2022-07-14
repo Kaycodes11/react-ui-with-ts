@@ -10,8 +10,9 @@ import {Products} from "./pages/Products";
 import {SignUp} from "./pages/SignUp";
 import {Accordion} from "./components/Accordion";
 import {ImageSlider} from "./components/Carousel";
-import "./App.css"
 import { Modal } from './components/Modal';
+import {useAppSelector} from "./hooks";
+import "./App.css"
 
 // move to separate component
 const ScrollToTop = () => {
@@ -27,6 +28,7 @@ const ScrollToTop = () => {
 
 export default function App() {
     const [showModal, setShowModal] = React.useState<boolean | any>(false);
+    const count = useAppSelector(state => state.counter.value);
 
     const openModal = () => {
         setShowModal((prev: any) => !prev);
