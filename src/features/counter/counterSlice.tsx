@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {CaseReducer, createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit"
 import type {RootState} from "../../store";
 
@@ -8,7 +8,11 @@ interface CounterState {
 }
 
 // initial state
-const initialState = {value: 0} as CounterState;
+const initialState: CounterState = {value: 0};
+// const initialState = {value: 0} as CounterState;
+
+// const incrementByAmount: CaseReducer<CounterState, PayloadAction<number>> = (state, action) => state.value += action.payload;
+
 
 export const counterSlice = createSlice({
     name: `counter`,
@@ -21,13 +25,14 @@ export const counterSlice = createSlice({
         decrement: (state) => {
             state.value -= 1;
         },
+        // incrementBy: incrementByAmount
         incrementByAmount: (state, action: PayloadAction<number>) => {
             state.value += action.payload;
         }
     }
 });
 
-export const { increment, incrementByAmount,decrement } = counterSlice.actions;
+export const { increment, incrementByAmount, decrement } = counterSlice.actions;
 export const selectCount = (state: RootState) => state.counter.value;
 export default counterSlice.reducer;
 
