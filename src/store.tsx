@@ -2,14 +2,17 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import type {PreloadedState} from '@reduxjs/toolkit'
 import {pokemonApi} from "./services/pokemon";
 import {counterSlice } from "./features/counter/counterSlice";
-import user from "./features/userSlice";
+import usersSlice from "./features/userSlice";
+import booksSlice from "./features/book";
 // import counter from "./features/counter/couter2";
 
 // combineReducers takes/lists all the reducers as key-value pair
 const rootReducer = combineReducers({
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     counter: counterSlice.reducer,
-    user: user.reducer
+    user: usersSlice.reducer,
+    books: booksSlice.reducer
+
 });
 
 
@@ -26,6 +29,8 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];
+
+
 
 // AppStore.dispatch(user.actions.setUserName(`john`))
 // AppStore.dispatch(counter.actions.multiply(2))

@@ -30,8 +30,8 @@ const ScrollToTop = () => {
 export default function App() {
     const [showModal, setShowModal] = React.useState<boolean | any>(false);
     const count = useAppSelector(state => state.counter.value);
-    const {data, error, isLoading} = useGetPokemonByNameQuery('squirtle');
-    console.log('data: ', data);
+    const {data, error, isLoading} = useGetPokemonByNameQuery('togepi');
+    // console.log('data: ', data);
 
     const openModal = () => {
         setShowModal((prev: any) => !prev);

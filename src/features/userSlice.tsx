@@ -108,7 +108,7 @@ const initialState: UserState & { name: string, age: number } = {
 };
 
 
-const user = createSlice({
+const usersSlice = createSlice({
     name: 'users',
     initialState,
     // standard reducer logic, with auto-generated action types per reducer
@@ -175,4 +175,4 @@ const user = createSlice({
 //     }, [props.userId])
 // }
 
-export default user;
+export default usersSlice;
