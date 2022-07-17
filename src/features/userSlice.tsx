@@ -1,16 +1,128 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import {AppDispatch, RootState} from "../store";
 
 
+interface MyKnownError {
+    errorMessage: string
+}
+
+interface UserAttributes {
+    id: string
+    first_name: string
+    last_name: string
+    email: string
+}
+
+// const updateUser = createAsyncThunk<// Return type of the payload creator
+//     MyData,
+//     // First argument to the payload creator
+//     UserAttributes,
+//     // Types for ThunkAPI
+//     {
+//         extra: {
+//             jwt: string
+//         };
+//         rejectValue: MyKnownError;
+//     }>('users/update', async (user, thunkApi) => {
+//     const {id, ...userData} = user
+//     const response = await fetch(`https://reqres.in/api/users/${id}`, {
+//         method: 'PUT',
+//         headers: {
+//             Authorization: `Bearer ${thunkApi.extra.jwt}`,
+//         },
+//         body: JSON.stringify(userData),
+//     })
+//     if (response.status === 400) {
+//         // Return the known error for future handling
+//         return thunkApi.rejectWithValue((await response.json()) as MyKnownError)
+//     }
+//     return (await response.json()) as MyData
+// });
+
+// interface MyData {}
+// const fetchUserById2 = createAsyncThunk<
+// // Return type of the payload creator i.e. return value
+//     MyData,
+//     // type of the first argument given to the payload creator
+//     number,
+//     {
+//         // Optional fields for defining thunkApi field types
+//         dispatch: AppDispatch;
+//         state: RootState;
+//         extra: {
+//             jwt: string
+//         };
+//     }>('users/fetchById', async (userId, thunkApi) => {
+//     const response = await fetch(`https://reqres.in/api/users/${userId}`, {
+//         headers: {
+//             Authorization: `Bearer ${thunkApi.extra.jwt}`,
+//         },
+//     })
+//     return (await response.json()) as MyData
+// });
+
+// const usersSlice = createSlice({
+//     name: 'users',
+//     initialState: {
+//         entities: {},
+//         error: null,
+//     },
+//     reducers: {},
+//     extraReducers: (builder) => {
+//         builder.addCase(updateUser.fulfilled, (state, {payload}) => {
+//             state.entities[payload.id] = payload
+//         })
+//         builder.addCase(updateUser.rejected, (state, action) => {
+//             if (action.payload) {
+//                 // Since we passed in `MyKnownError` to `rejectValue` in `updateUser`, the type information will be available here.
+//                 state.error = action.payload.errorMessage
+//             } else {
+//                 state.error = action.error
+//             }
+//         })
+//     },
+// });
+
+// component example
+// const handleUpdateUser = async (userData) => {
+//     const resultAction = await dispatch(updateUser(userData))
+//     if (updateUser.fulfilled.match(resultAction)) {
+//         const user = resultAction.payload
+//         showToast('success', `Updated ${user.name}`)
+//     } else {
+//         if (resultAction.payload) {
+//             // Since we passed in `MyKnownError` to `rejectValue` in `updateUser`, the type information will be available here.
+//             // Note: this would also be a good place to do any handling that relies on the `rejectedWithValue` payload, such as setting field errors
+//             showToast('error', `Update failed: ${resultAction.payload.errorMessage}`)
+//         } else {
+//             showToast('error', `Update failed: ${resultAction.error.message}`)
+//         }
+//     }
+// };
+
+interface Data {
+    data: {
+        id: number;
+        email: string;
+        first_name: string;
+        last_name: string;
+        avatar: string;
+    };
+    support: {
+        url: string;
+        text: string;
+    }
+}
 
 // using signal
 const fetchUserByUserId = createAsyncThunk(
     'users/fetchById',
-    async (userId: string, {signal}) => {
+    async (userId: string | number = 1, {signal}) => {
         const response = await fetch(`https://reqres.in/api/users/${userId}`, {
             signal: signal,
         })
-        return await response.json()
+        return (await response.json()) as Data;
     }
 );
 

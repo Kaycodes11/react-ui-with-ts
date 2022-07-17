@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import type { RootState } from '../store'
 
 type Book = { bookId: string; title: string };
@@ -23,7 +23,7 @@ const booksSlice = createSlice({
                 state.loading = 'pending';
             }
         },
-        booksReceived(state, action) {
+        booksReceived(state, action: PayloadAction<{books: Book[]}>) {
             if (state.loading === 'pending') {
                 booksAdapter.setAll(state, action.payload.books);
                 state.loading = `idle`;

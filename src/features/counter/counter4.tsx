@@ -53,6 +53,7 @@ export const counterSlice = createSlice({
             state.value += action.payload;
         }
     },
+    // read: extraReducer is good to handle action types from other slice reudcers and thunk action
     extraReducers: (builder) => {
         // we'll match on the async action or the manual increment being that both have a payload of type `number`
         builder

@@ -4,7 +4,7 @@ import {pokemonApi} from "./services/pokemon";
 import {counterSlice } from "./features/counter/counterSlice";
 import usersSlice from "./features/userSlice";
 import booksSlice from "./features/book";
-// import counter from "./features/counter/couter2";
+
 
 // combineReducers takes/lists all the reducers as key-value pair
 const rootReducer = combineReducers({
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 
 console.log(`MODE`, !process.env.REACT_APP_IS_PROD);
 
-// basically prvodie some data before (from server/local) to the required reducer keeping the same data shape
+// basically provide some data before (from server/local) to the required reducer keeping the same data shape
 
 // const preloadedState = {
 //     users: [
@@ -60,3 +60,5 @@ export type AppDispatch = AppStore['dispatch'];
 // AppStore.dispatch(counter.actions.multiply(2))
 
 // compose function build from left to right
+
+// https://redux-toolkit.js.org/usage/usage-with-typescript

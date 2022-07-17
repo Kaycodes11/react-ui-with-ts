@@ -17,7 +17,7 @@ const todosSlice = createSlice({
             reducer: (state, action: PayloadAction<Item>) => {
                 state.push(action.payload)
             },
-            // customize the payload if needed before it used to update the state from reducer method
+            // to customize the payload as needed before it goes to update the state from reducer method
             prepare: (text: string) => {
                 const id = nanoid()
                 return { payload: { id, text } }
