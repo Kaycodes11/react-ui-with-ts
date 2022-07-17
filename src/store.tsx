@@ -4,10 +4,12 @@ import {pokemonApi} from "./services/pokemon";
 import {counterSlice } from "./features/counter/counterSlice";
 import usersSlice from "./features/userSlice";
 import booksSlice from "./features/book";
+import {setupListeners} from "@reduxjs/toolkit/query";
 
 
 // combineReducers takes/lists all the reducers as key-value pair
 const rootReducer = combineReducers({
+    // add the generated reducer as a specific top-level slice
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     counter: counterSlice.reducer,
     users: usersSlice.reducer,
@@ -53,7 +55,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
 export type AppDispatch = AppStore['dispatch'];
-
 
 
 // AppStore.dispatch(user.actions.setUserName(`john`))
