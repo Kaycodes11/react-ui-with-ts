@@ -1,4 +1,4 @@
-import {createSlice, current} from "@reduxjs/toolkit";
+import {createSlice, current, original} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit"
 import type {RootState} from "../../store";
 
@@ -19,6 +19,7 @@ export const counterSlice = createSlice({
     initialState,
     reducers: {
         incrementBy10: (state, action: PayloadAction<number>) => {
+            console.log(`og`, original(state));
             console.log(`before`, current(state));
             state.value += action.payload || 10;
             console.log(`after`, current(state));

@@ -10,17 +10,41 @@ import booksSlice from "./features/book";
 const rootReducer = combineReducers({
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     counter: counterSlice.reducer,
-    user: usersSlice.reducer,
+    users: usersSlice.reducer,
     books: booksSlice.reducer
 
 });
 
+console.log(`MODE`, !process.env.REACT_APP_IS_PROD);
+
+// basically prvodie some data before (from server/local) to the required reducer keeping the same data shape
+
+// const preloadedState = {
+//     users: [
+//         {
+//             name: "james",
+//             age: 11
+//         },
+//         {
+//             name: "jones",
+//             age: 14
+//         },
+//     ],
+//     visibilityFilter: 'SHOW_COMPLETED',
+// }
+//
+// const store = configureStore({
+//     reducer: rootReducer,
+//     devTools: process.env.NODE_ENV !== 'production',
+//     preloadedState,
+// })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     return configureStore({
         reducer: rootReducer,
+        // devTools: !process.env.REACT_APP_IS_PROD,
         middleware: (getDefaultMiddleware) =>
-            // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`
+            // adding the api middleware enables caching, invalidation, polling and other features from `rtk-query`
             getDefaultMiddleware().concat(pokemonApi.middleware),
         preloadedState,
     })
@@ -35,19 +59,4 @@ export type AppDispatch = AppStore['dispatch'];
 // AppStore.dispatch(user.actions.setUserName(`john`))
 // AppStore.dispatch(counter.actions.multiply(2))
 
-/*
-
-export const store = configureStore({
-    reducer: {
-        counter: counterReducer,
-    },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-    ReturnType,
-    RootState,
-    unknown,
-    Action<string>
-    >;
-*/
+// compose function build from left to right
