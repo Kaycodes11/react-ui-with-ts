@@ -5,19 +5,20 @@ import {counterSlice } from "./features/counter/counterSlice";
 import usersSlice from "./features/userSlice";
 import booksSlice from "./features/book";
 import {setupListeners} from "@reduxjs/toolkit/query";
+import {postApi} from "./services/post";
 
 
 // combineReducers takes/lists all the reducers as key-value pair
 const rootReducer = combineReducers({
     // add the generated reducer as a specific top-level slice
     [pokemonApi.reducerPath]: pokemonApi.reducer,
+    [postApi.reducerPath]: postApi.reducer,
     counter: counterSlice.reducer,
     users: usersSlice.reducer,
     books: booksSlice.reducer
 
 });
 
-console.log(`MODE`, !process.env.REACT_APP_IS_PROD);
 
 // basically provide some data before (from server/local) to the required reducer keeping the same data shape
 
@@ -47,7 +48,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
         // devTools: !process.env.REACT_APP_IS_PROD,
         middleware: (getDefaultMiddleware) =>
             // adding the api middleware enables caching, invalidation, polling and other features from `rtk-query`
-            getDefaultMiddleware().concat(pokemonApi.middleware),
+            getDefaultMiddleware().concat(pokemonApi.middleware, postApi.middleware),
         preloadedState,
     })
 };

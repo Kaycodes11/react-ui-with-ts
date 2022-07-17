@@ -14,8 +14,8 @@ import {Modal} from './components/Modal';
 import {useAppSelector} from "./hooks";
 import {useGetPokemonByNameQuery} from "./services/pokemon";
 import {Counter} from "./features/counter/Counter";
-import "./App.css"
 import {skipToken} from "@reduxjs/toolkit/query";
+import "./App.css"
 
 // move to separate component
 const ScrollToTop = () => {
@@ -32,6 +32,7 @@ const ScrollToTop = () => {
 export default function App() {
     const [showModal, setShowModal] = React.useState<boolean | any>(false);
     const count = useAppSelector(state => state.counter.value);
+    // const {data: posts} = useGetPostsQuery();
     // Using a query hook automatically fetches data and returns query values
     const {data, error, isLoading} = useGetPokemonByNameQuery('pikachu' ?? skipToken);
 
@@ -40,6 +41,8 @@ export default function App() {
 
     // Individual hooks are also accessible under the generated endpoints:
     // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
+
+    // console.group(`posts`, posts);
 
     const openModal = () => {
         setShowModal((prev: any) => !prev);
