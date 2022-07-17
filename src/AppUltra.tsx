@@ -12,8 +12,9 @@ import {Accordion} from "./components/Accordion";
 import {ImageSlider} from "./components/Carousel";
 import {Modal} from './components/Modal';
 import {useAppSelector} from "./hooks";
-import "./App.css"
 import {useGetPokemonByNameQuery} from "./services/pokemon";
+import {Counter} from "./features/counter/Counter";
+import "./App.css"
 
 // move to separate component
 const ScrollToTop = () => {
@@ -30,7 +31,7 @@ const ScrollToTop = () => {
 export default function App() {
     const [showModal, setShowModal] = React.useState<boolean | any>(false);
     const count = useAppSelector(state => state.counter.value);
-    const {data, error, isLoading} = useGetPokemonByNameQuery('togepi');
+    const {data, error, isLoading} = useGetPokemonByNameQuery('Totodile');
     // console.log('data: ', data);
 
     const openModal = () => {
@@ -43,6 +44,7 @@ export default function App() {
             <GlobalStyle/>
             <ScrollToTop/>
             <NavBar/>
+            {/*<Counter />*/}
 
             {error ? (
                 <>Oh no, there was an error</>
