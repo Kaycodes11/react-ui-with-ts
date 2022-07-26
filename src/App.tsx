@@ -1,27 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import {config} from "./config";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {initializeApp} from "firebase/app";
+import HomePage from "./pages/Login";
+import Auth from "./features/Auth";
+import LoginPage from "./pages/Login";
 import './App.css';
 
-// learn to use firebase features
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// firebase init
+try {
+    initializeApp(config.firebaseConfig);
+} catch (error) {
+    console.error(error)
 }
+
+
+type Props = {}
+
+const App: React.FC<Props> = (props) => {
+  return (
+      <Router>
+        <Routes>
+          <Route path="/" element={<Auth><HomePage /></Auth>}/>
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Router>
+  );
+};
 
 export default App;
